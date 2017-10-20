@@ -1,0 +1,47 @@
+{
+  "name": "linkworks",
+  "description": "Link Redirection for ThoughtWorks",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Stono/linkworks",
+  "author": {
+    "name": "Karl Stoney",
+    "email": "kstoney@thoughtworks.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Stono/linkworks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Stono/linkworks/issues"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": ">= 7.0.0"
+  },
+  "scripts": {
+    "deploy": "./deploy.sh",
+    "start": "node app.js",
+    "test": "./node_modules/grunt/bin/grunt mochaTest"
+  },
+  "devDependencies": {
+    "deride": "1.1.0",
+    "grunt": "1.0.1",
+    "grunt-contrib-jshint": "1.1.0",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-mocha-istanbul": "5.0.2",
+    "grunt-mocha-test": "0.13.3",
+    "grunt-notify": "0.4.5",
+    "istanbul": "0.4.5",
+    "mocha": "4.0.1",
+    "mocha-jenkins-reporter": "0.3.10",
+    "serverless": "1.23.0",
+    "serverless-google-cloudfunctions": "1.1.1",
+    "should": "13.1.2"
+  },
+  "keywords": [],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@google-cloud/datastore": "1.1.0",
+    "async": "2.5.0"
+  }
+}

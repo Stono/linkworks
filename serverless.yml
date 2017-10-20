@@ -1,0 +1,25 @@
+service: linkworks
+
+provider:
+  name: google
+  runtime: nodejs
+  project: peopledata-product-team
+  credentials: secret_key.json
+
+plugins:
+  - serverless-google-cloudfunctions
+
+package:
+  include:
+    - lib/**
+    - index.js
+  exclude:
+    - "*.swp"
+    - secret_key.json
+
+functions:
+  linkworks:
+    memorySize: 128
+    handler: linkworks
+    events:
+      - http: path
