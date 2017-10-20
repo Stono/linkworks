@@ -8,9 +8,13 @@ A simple service (Google Cloud Function) that allows you to register one url to 
 Run `npm install`.
 
 ### Deploying
-We deploy using the serverless framework, so make sure your `gcloud auth login` is setup, and your `gcloud config get project` is targetting the right projecti and you've updated the project in [serverless.yml](serverless.yml) and simply run `npm run deploy`.
+We deploy using the serverless framework, so make sure:
 
-The serverless framework uses service accounts in order to deploy, the deploy script will:
+    - Your `gcloud auth login` is logged in correctly.
+    - Your `gcloud config get project` is targetting the right project.
+    - You've updated the project in [serverless.yml](serverless.yml).
+
+Once you've done those things, simply run `npm run deploy`.  The serverless framework uses service accounts in order to deploy, the deploy script will:
 
   - Look up your App Engine default service account
   - Generate an account key
@@ -20,10 +24,15 @@ The serverless framework uses service accounts in order to deploy, the deploy sc
 
 ### Using the service
 #### Setting up a redirect
-Support we want to redirect `/test` on our function to `https://www.google.com`, we'd do it with a PUT:
+Suppose we want to redirect `/test` on our function to `https://www.google.com`, we'd do it with a PUT:
 
 `curl -X PUT -d '' -kv https://us-central1-<your-project>.cloudfunctions.net/linkworks/test?target=https://www.google.com`
 
+And you'll get a 204 Accepted back.
+
+__Note:__ If you're wondering about the -d '', it's because GCF expects a Content-Length to be set, that makes curl set one.'
+
+#### Consuming a redirect
 Then if we were to GET it, we'd see:
 
 ```
@@ -47,4 +56,4 @@ $ curl -v https://us-central1-<your-project>.cloudfunctions.net/linkworks/test
 Temporary Redirect. Redirecting to https://www.google.com
 ```
 
-MAGIC.
+![magic](magic.jpg)
